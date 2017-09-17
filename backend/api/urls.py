@@ -1,7 +1,7 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 
-from api.views import CircleView
+from .views import CircleView
 
 urlpatterns = [
-    url(r'^circle/', CircleView.as_view()),
+    url(r'^circle/', CircleView.as_view(), name='circle'),
 ]

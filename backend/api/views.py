@@ -3,7 +3,7 @@ from random import randint
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from api.serializers import SceneSerializer, CircleSerializer, PointSerializer, InsideSceneRequestSerializer, \
+from .serializers import SceneSerializer, CircleSerializer, PointSerializer, InsideSceneRequestSerializer, \
     InsideSceneResponseSerializer
 
 
@@ -14,8 +14,6 @@ class CircleView(APIView):
 
         width = scene.data['width']
         height = scene.data['height']
-
-        print(width, height)
 
         return Response(
             data=CircleSerializer({
