@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: backend
+    env_file:
+      - .env
+
+  frontend:
+    container_name: web
+    build:
+      context: frontend
+      args:
+        base: ${ENDPOINT}
+
+  balancer:
+      container_name: balancer
+      build:
+        context: balancer
+      volumes_from:
+        - frontend:ro
+      ports:
+        - 80:80
+      depends_on:
+        - frontend
+        - backend
